@@ -37,14 +37,67 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```
+# Importing Libraries
+import pandas as pd                                                 
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
 
+# Read the dataset from drive
+df=pd.read_csv("Churn_Modelling.csv",index_col="RowNumber")         
+df.head()
 
+# Finding Missing Values
+df.isnull().sum()
+
+# Check For Duplicates
+df.duplicated().sum()
+
+# Remove Unnecessary Columns
+df=df.drop(['Surname', 'Geography','Gender'], axis=1)
+
+# Normalize the dataset                                         
+scaler=StandardScaler()                                             
+df=pd.DataFrame(scaler.fit_transform(df))
+df.head()
+
+# Split the dataset into input and output
+X,Y=df.iloc[:,:-1].values ,df.iloc[:,-1].values
+print('Input:\n',X,'\nOutput:\n',Y)
+
+# Splitting the data for training & Testing
+Xtrain,Xtest,Ytrain,Ytest = train_test_split(X, Y, test_size=0.2)
+
+# X Train and Test
+print("Xtrain:\n" ,Xtrain, "\nXtest:\n", Xtest)
+
+# Y Train and Test
+print("\nYtrain:\n" ,Ytrain, "\nYtest:\n", Ytest)
+```
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+### Dataset:
+![Screenshot 2024-02-25 172812](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/1bd8e7fb-4c0c-4a29-a5c8-16eb6b7cc330)
+
+### Null Values:
+![Screenshot 2024-02-25 172838](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/76fdcfa0-0556-48c3-988f-935c50e6911a)
+
+### Normalized:
+![Screenshot 2024-02-25 172859](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/242e5515-c64e-49bb-b1f2-41731b981666)
+
+### Data Splitting:
+![Screenshot 2024-02-25 172924](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/3c9cc008-8e76-4457-a1a9-054bd7ab99d2)
+![Screenshot 2024-02-25 172940](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/e5e363f3-11d9-4f34-894a-f83abbd10457)
+
+### Train Data:
+![Screenshot 2024-02-25 173013](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/c19d8d91-f7d1-4ccc-a764-2f3e17fc9d09)
+![Screenshot 2024-02-25 173043](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/f22565ff-bded-4f30-84f6-88252c7a6887)
+
+### Test Data:
+![Screenshot 2024-02-25 173027](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/768d194b-c554-477b-80d8-3e35c7e90ba6)
+![Screenshot 2024-02-25 173101](https://github.com/vasundrasriravi/Ex-1-NN/assets/119393983/3f513c2c-233b-4142-84c3-f0776543260e)
 
 
 ## RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
-
-
