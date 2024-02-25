@@ -1,5 +1,5 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME:VASUNDRA SRI R</H3>
+<H3>ENTER YOUR REGISTER NO.:212222230168</H3>
 <H3>EX. NO.1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
@@ -50,6 +50,7 @@ df=pd.read_csv("Churn_Modelling.csv",index_col="RowNumber")
 df.head()
 
 # Finding Missing Values
+
 df.isnull().sum()
 
 # Check For Duplicates
@@ -58,7 +59,7 @@ df.duplicated().sum()
 # Remove Unnecessary Columns
 df=df.drop(['Surname', 'Geography','Gender'], axis=1)
 
-# Normalize the dataset                                         
+# Normalize the dataset 
 scaler=StandardScaler()                                             
 df=pd.DataFrame(scaler.fit_transform(df))
 df.head()
